@@ -28,7 +28,7 @@ OpenSSL是一套件开放源代码的安全套接字密码学基础库，囊括�
 
 ### (二)天安TaSSL添加的及完善的API
 
-#### 1.Crypto相关的API
+#### Crypto相关的API
 1. EVP_sm3()：取摘要算法SM3算法的EVP调用函数指针；
 2. EVP_sm4()、EVP_sm4_cbc()：取SM4对称加密算法CBC模式的EVP调用的函数指针；
 3. EVP_sm4_cfb()：取SM4对称加密算法CFB模式的EVP调用的函数指针；
@@ -53,7 +53,7 @@ OpenSSL是一套件开放源代码的安全套接字密码学基础库，囊括�
 22. sm2_encrypt()、sm2_decrypt()、sm2_do_sign()、sm2_do_verify()、i2d_sm2_enc()、d2i_sm2_enc()：SM2算法的签名、验签、加密、解密相关函数；
 23. EVP_sm1()、EVP_sm1_cbc()、EVP_sm1_cfb()、EVP_sm1_ecb()、EVP_sm1_ofb()：预留的SM1接口函数，用于使用引擎实现SM1算法。
 
-#### 2.ssl相关的API
+#### ssl相关的API
 1. CNTLS_client_method()：获取国密TLSv1.1标准协议的相关SSL/TLS相关方法，以使用客户端使用标准的TLSv1.1协议进行握手、通讯；
 2. *SSL_CTX_check_enc_private_key()、SSL_check_enc_private_key()、SSL_use_enc_PrivateKey()、SSL_use_enc_PrivateKey_ASN1()、SSL_CTX_use_enc_PrivateKey()、SSL_CTX_use_enc_PrivateKey_ASN1()、SSL_use_enc_PrivateKey_file()、SSL_CTX_use_enc_PrivateKey_file()*
 为支持国密双证书体系而添加的函数。
