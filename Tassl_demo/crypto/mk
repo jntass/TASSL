@@ -1,0 +1,15 @@
+#! /bin/bash
+
+bash mk.sh sm2dh
+bash mk.sh sm2enc
+bash mk.sh sm2enc_der
+bash mk.sh sm2enc_evp
+bash mk.sh sm2kap
+bash mk.sh sm2keygen
+bash mk.sh sm2keygen_evp
+bash mk.sh sm2sign
+bash mk.sh sm2sign_evp2
+bash mk.sh sm2sign_evp
+bash mk.sh sm2sign_evpdigest
+bash mk.sh sm3test
+bash mk.sh sm4test
