@@ -58,7 +58,12 @@ OpenSSL是一套件开放源代码的安全套接字密码学基础库，囊括�
 2. *SSL_CTX_check_enc_private_key()、SSL_check_enc_private_key()、SSL_use_enc_PrivateKey()、SSL_use_enc_PrivateKey_ASN1()、SSL_CTX_use_enc_PrivateKey()、SSL_CTX_use_enc_PrivateKey_ASN1()、SSL_use_enc_PrivateKey_file()、SSL_CTX_use_enc_PrivateKey_file()*
 为支持国密双证书体系而添加的函数。
 
-### (三)关于江南天安
+### (三)TASSL使用说明
+1. 目前开源的版本是基于openssl 1.0.2n版本；
+2. 关于开发，编译，测试证书以及跟360国密浏览器联调的问题，参见Issues；
+3. 我们开源的主要目的是推进国密算法的推广及应用，让你身边的人都知道TASSL，让更多的公司和个人用TASSL，一起创造更活跃的社区。
+
+### (四)关于江南天安
 
 地址：北京市海淀区马甸东路17号金澳国际大厦11层1110室
 
