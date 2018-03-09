@@ -4478,3 +4478,4 @@ sm2_decrypt                             5043	EXIST::FUNCTION:CNSM
 sm2_do_sign                             5044	EXIST::FUNCTION:CNSM
 sm2_do_verify                           5045	EXIST::FUNCTION:CNSM
 sm2_encrypt                             5046	EXIST::FUNCTION:CNSM
+ERR_load_SM2_strings                    5047  EXIST::FUNCTION:CNSM
