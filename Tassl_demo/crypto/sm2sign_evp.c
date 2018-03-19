@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
     EVP_VerifyInit(&md_ctx, EVP_sm3());
     EVP_VerifyUpdate(&md_ctx, digest, len);
     EVP_VerifyUpdate(&md_ctx, argv[1], (size_t)strlen(argv[1]));
-    if (!EVP_VerifyFinal(&md_ctx, (const unsigned char *)out, (unsigned int)ilen, sm2key))
+    if (EVP_VerifyFinal(&md_ctx, (const unsigned char *)out, (unsigned int)ilen, sm2key) <= 0)
     {    
         printf("EVP_PKEY_verify Error.\n");
     }
