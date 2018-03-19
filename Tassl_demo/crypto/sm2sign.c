@@ -178,7 +178,7 @@ int main(int argc, char *argv[])
     printf("]\n");
 
     /*Now Verify it*/
-    if (ECDSA_verify(0, digest, (int)dgst_len, (const unsigned char *)sig, siglen, sm2key) == 0)
+    if (ECDSA_verify(0, digest, (int)dgst_len, (const unsigned char *)sig, siglen, sm2key) <= 0)
     {
         printf("Error Of SM2 Verify.\n");
     }
