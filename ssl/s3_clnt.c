@@ -4081,8 +4081,8 @@ int ssl3_send_client_certificate(SSL *s)
             /*CERT_PKEY *enc_pkey = NULL;*/
 
             /*enc_pkey = &s->cert->pkeys[SSL_PKEY_ECC_ENC];*/
-            /*if (!ssl3_output_sm2_cert_chain(s, (s->s3->tmp.cert_req == 2) ? NULL : s->cert->key, &s->cert->pkeys[SSL_PKEY_ECC_ENC])) {*/
-            if (!ssl3_output_sm2_cert(s, (s->s3->tmp.cert_req == 2) ? NULL : s->cert->key, &s->cert->pkeys[SSL_PKEY_ECC_ENC]))
+            if (!ssl3_output_sm2_cert_chain(s, (s->s3->tmp.cert_req == 2) ? NULL : s->cert->key, &s->cert->pkeys[SSL_PKEY_ECC_ENC]))  //加载证书链 by ggs on 20180608 
+            /*if (!ssl3_output_sm2_cert(s, (s->s3->tmp.cert_req == 2) ? NULL : s->cert->key, &s->cert->pkeys[SSL_PKEY_ECC_ENC]))*/
             {
                 SSLerr(SSL_F_SSL3_SEND_CLIENT_CERTIFICATE, ERR_R_INTERNAL_ERROR);
                 ssl3_send_alert(s, SSL3_AL_FATAL, SSL_AD_INTERNAL_ERROR);
