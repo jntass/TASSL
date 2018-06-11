@@ -1160,17 +1160,19 @@ int ssl_add_sm2_cert_chain(SSL *s, CERT_PKEY *cpk, CERT_PKEY *enc_cpk, unsigned 
         }
     }
 
-    if ((enc_cpk != NULL) && (enc_cpk->x509 != NULL))
-    {
-        if (!ssl_add_cert_to_buf(buf, l, enc_cpk->x509))
-            return 0;
-    }
-
+		/* 调整证书加载顺序，先加载签名证书链，再加载加密证书 add by ggs on 20180601*/
     for (i = 0; i < sk_X509_num(extra_certs); i++) {
         x = sk_X509_value(extra_certs, i);
         if (!ssl_add_cert_to_buf(buf, l, x))
             return 0;
     }
+    
+    if ((enc_cpk != NULL) && (enc_cpk->x509 != NULL))
+    {
+        if (!ssl_add_cert_to_buf(buf, l, enc_cpk->x509))
+            return 0;
+    }
+    
 
     return 1;
 }
@@ -1184,7 +1186,7 @@ int ssl_add_sm2_cert(SSL *s, CERT_PKEY *cpk, CERT_PKEY *enc_cpk, unsigned long *
         SSLerr(SSL_F_SSL_ADD_CERT_CHAIN, ERR_R_BUF_LIB);
         return 0;
     }
-    if (cpk->x509 != NULL) {
+    if (cpk != NULL && cpk->x509 != NULL) {     //检查cpk by ggs on 20180608
         if (!ssl_add_cert_to_buf(buf, l, cpk->x509))
             return 0;
     }
