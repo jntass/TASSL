@@ -516,11 +516,14 @@ int ssl3_accept(SSL *s)
         case SSL3_ST_SW_CERT_REQ_A:
         case SSL3_ST_SW_CERT_REQ_B:
             if (                /* don't request cert unless asked for it: */
-#ifndef OPENSSL_NO_CNSM
+/*#ifndef OPENSSL_NO_CNSM
                    (!(s->verify_mode & SSL_VERIFY_PEER) && !(s->s3->tmp.new_cipher->algorithm_mkey & SSL_kSM2DH)) ||
 #else // !OPENSSL_NO_CNSM
                    !(s->verify_mode & SSL_VERIFY_PEER) ||
 #endif // !OPENSSL_NO_CNSM
+删除对于ecc套件不允许发送证书请求进行双向验证的限制，原来理解有误 by gu on  20180608*/
+
+										!(s->verify_mode & SSL_VERIFY_PEER) ||
                    /*
                     * if SSL_VERIFY_CLIENT_ONCE is set, don't request cert
                     * during re-negotiation:
@@ -545,9 +548,9 @@ int ssl3_accept(SSL *s)
                    (s->s3->tmp.new_cipher->algorithm_auth & SSL_aKRB5) ||
                    /* don't request certificate for SRP auth */
                    (s->s3->tmp.new_cipher->algorithm_auth & SSL_aSRP)
-#ifndef OPENSSL_NO_CNSM
+/*#ifndef OPENSSL_NO_CNSM
                    || (s->s3->tmp.new_cipher->algorithm_mkey & SSL_kECC)
-#endif // !OPENSSL_NO_CNSM
+#endif // !OPENSSL_NO_CNSM 删除对于ecc套件不允许发送证书请求进行双向验证的限制，原来理解有误 by gu on  20180608*/
                    /*
                     * With normal PSK Certificates and Certificate Requests
                     * are omitted
@@ -3901,8 +3904,8 @@ int ssl3_send_server_certificate(SSL *s)
         {
             enc_cpk = ssl_get_server_send_enc_pkey(s);
             /* AT HERE, STANDARD OPENSSL OUTPUT CERT CHAIN, AND CHINA TLS ONLY OUT CERT */
-            /*if (!ssl3_output_sm2_cert_chain(s, cpk, enc_cpk)) {*/
-            if (!ssl3_output_sm2_cert(s, cpk, enc_cpk))
+            if (!ssl3_output_sm2_cert_chain(s, cpk, enc_cpk))
+						/* if (!ssl3_output_sm2_cert(s, cpk, enc_cpk))*/     /*因微众银行需求，修改为加载证书链 by gu on 20180601*/
             {
                 SSLerr(SSL_F_SSL3_SEND_SERVER_CERTIFICATE, ERR_R_INTERNAL_ERROR);
                 s->state = SSL_ST_ERR;
