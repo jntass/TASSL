@@ -889,8 +889,10 @@ static int pkey_ec_decrypt(EVP_PKEY_CTX *ctx, unsigned char *out, size_t *outlen
     }
 
     retval = sm2_decrypt(out, outlen, (const SM2ENC *)ec_enc, md, ctx->pkey->pkey.ec);
+    if(!retval)
     {
         ECerr(EC_F_PKEY_SM2_DECRYPT, EC_R_SM2_DECRYPT);
+        goto err;
     }
 
 err:
