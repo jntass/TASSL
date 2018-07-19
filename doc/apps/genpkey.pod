@@ -148,10 +148,6 @@ and 2048 bit group with 256 bit subgroup as mentioned in RFC5114 sections
 
 the EC curve to use.
 
-=item B<ec_param_enc>
-
-the EC parameters encode. the value maybe B<explicit> or B<named_curve>
-
 =back
 
 =head1 GOST2001 KEY GENERATION AND PARAMETER OPTIONS
@@ -228,8 +224,6 @@ Generate DH key from parameters:
 
  openssl genpkey -paramfile dhp.pem -out dhkey.pem 
 
-Generate EC/SM2 key from parameters:
- openssl genpkey -algorithm ec -pkeyopt ec_paramgen_curve:SM2 -pkeyopt ec_param_enc:named_curve
 
 =cut
 
