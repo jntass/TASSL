@@ -380,8 +380,8 @@
 
 # define SSL_MD5                 0x00000001L
 # define SSL_SHA1                0x00000002L
-# define SSL_GOST94              0x00000004L
-# define SSL_GOST89MAC           0x00000008L
+# define SSL_GOST94      0x00000004L
+# define SSL_GOST89MAC   0x00000008L
 # define SSL_SHA256              0x00000010L
 # define SSL_SHA384              0x00000020L
 # ifndef OPENSSL_NO_CNSM
